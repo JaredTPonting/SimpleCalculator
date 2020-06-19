@@ -17,7 +17,82 @@ def buttonDo(number):
     current = entry.get()
     entry.delete(0, tk.END)
     entry.insert(2, current + str(number))
+    
+def buttonAdd():
+    fNum = entry.get()
+    global first
+    first = float(fNum)
+    clear()
+    global Mult
+    global addition
+    global Sub
+    global Div
+    addition = True
+    Mult = False
+    Sub = False
+    Div = False
+    
+def buttonMul():
+    fNum = entry.get()
+    global first
+    first = float(fNum)
+    clear()
+    global Mult
+    global addition
+    global Sub
+    global Div
+    Mult = True
+    Div = False
+    addition = False
+    Sub = False
+    
+def buttonDiv():
+    fNum = entry.get()
+    global first
+    first = float(fNum)
+    clear()
+    global Mult
+    global addition
+    global Sub
+    global Div
+    Mult = False
+    Div = True
+    addition = False
+    Sub = False
+def buttonSub():
+    fNum = entry.get()
+    global first
+    first = float(fNum)
+    clear()
+    global Mult
+    global addition
+    global Sub
+    global Div
+    Mult = False
+    Div = False
+    addition = False
+    Sub = True
 
+def Eq():
+    sNum = entry.get()
+    second = float(sNum)
+    global ans
+    if addition:
+        ans = first + second
+        clear()
+        entry.insert(0,ans)
+    elif Mult:
+        ans = first * second
+        clear()
+        entry.insert(0,ans)
+    elif Div:
+        ans = first / second
+        clear()
+        entry.insert(0,ans)
+    elif Sub:
+        ans = first - second
+        clear()
+        entry.insert(0,ans)
 
 root = tk.Tk()
 root.title("Calculator")
@@ -71,21 +146,21 @@ button3.place(relx = 0.5, rely = 0, relwidth = 0.25, relheight = 1)
 
 button0 = tk.Button(frame5, text = "0", command = lambda: buttonDo(0))
 button0.place(relx = 0, rely = 0, relwidth = 0.25, relheight = 1)
-buttonDecimal = tk.Button(frame5, text = ".", command = lambda: buttonDo())
+buttonDecimal = tk.Button(frame5, text = ".", command = lambda: buttonDo("."))
 buttonDecimal.place(relx = 0.25, rely = 0, relwidth = 0.25, relheight = 1)
-buttonEq = tk.Button(frame5, text = "=", command = lambda: buttonDo())
+buttonEq = tk.Button(frame5, text = "=", command = Eq)
 buttonEq.place(relx = 0.5, rely = 0, relwidth = 0.25, relheight = 0.5)
 
-buttonDivide = tk.Button(frame2, text = "/", command = lambda: buttonDo())
+buttonDivide = tk.Button(frame2, text = "/", command = buttonDiv)
 buttonDivide.place(relx = 0.75,rely=0, relwidth = 0.25, relheight = 1)
 
-buttonMultiply = tk.Button(frame3, text = "x", command = lambda: buttonDo())
+buttonMultiply = tk.Button(frame3, text = "x", command = buttonMul)
 buttonMultiply.place(relx = 0.75,rely=0, relwidth = 0.25, relheight = 1)
 
-buttonSub = tk.Button(frame4, text = "-", command = lambda: buttonDo())
+buttonSub = tk.Button(frame4, text = "-", command = buttonSub)
 buttonSub.place(relx = 0.75,rely=0, relwidth = 0.25, relheight = 1)
 
-buttonAdd = tk.Button(frame5, text = "+", command = lambda: buttonDo())
+buttonAdd = tk.Button(frame5, text = "+", command = buttonAdd)
 buttonAdd.place(relx = 0.75,rely=0, relwidth = 0.25, relheight = 1)
 
 buttonBack = tk.Button(frame5, text = "Clear", command = clear)
