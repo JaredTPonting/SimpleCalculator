@@ -10,7 +10,8 @@ import tkinter as tk
 HEIGHT = 500
 WIDTH = 500
 
-
+def clear():
+    entry.delete(0, tk.END)
     
 def buttonDo(number):
     current = entry.get()
@@ -87,7 +88,7 @@ buttonSub.place(relx = 0.75,rely=0, relwidth = 0.25, relheight = 1)
 buttonAdd = tk.Button(frame5, text = "+", command = lambda: buttonDo())
 buttonAdd.place(relx = 0.75,rely=0, relwidth = 0.25, relheight = 1)
 
-buttonBack = tk.Button(frame5, text = "Back", command = lambda: buttonDo())
+buttonBack = tk.Button(frame5, text = "Clear", command = clear)
 buttonBack.place(relx = 0.5, rely = 0.5, relwidth = 0.25, relheight = 0.5)
 
 
