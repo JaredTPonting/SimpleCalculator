@@ -76,7 +76,6 @@ def buttonSub():
 def Eq():
     sNum = entry.get()
     second = float(sNum)
-    global ans
     if addition:
         ans = first + second
         clear()
